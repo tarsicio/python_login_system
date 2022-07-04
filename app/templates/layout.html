@@ -12,17 +12,20 @@
 			<div>
 				<ul class="navbar-nav ml-auto">
 					{% if current_user.is_authenticated %}
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ url_for('.task') }}">Task</a>
+						<li class="nav-item {% if active == 'tasks' %} active {% endif %}">
+							<a class="nav-link" href="{{ url_for('.tasks') }}">Task</a>
 						</li>
-						<li class="nav-item active">
+						<li class="nav-item {% if active == 'new_task' %} active {% endif %}">
+							<a class="nav-link" href="{{ url_for('.new_task') }}">New_Task</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link" href="{{ url_for('.logout') }}">Logout</a>
 						</li>
 					{% else %}
-						<li class="nav-item active">
+						<li class="nav-item {% if active == 'login' %} active {% endif %}">
 							<a class="nav-link" href="{{ url_for('.login') }}">Login</a>
 						</li>					
-						<li class="nav-item active">
+						<li class="nav-item {% if active == 'register' %} active {% endif %}">
 							<a class="nav-link" href="{{ url_for('.register') }}">Register</a>
 						</li>	
 					{% endif %}									

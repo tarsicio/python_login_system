@@ -1,6 +1,6 @@
 from wtforms import Form, HiddenField
 from wtforms import validators
-from wtforms import StringField, PasswordField, BooleanField
+from wtforms import StringField, PasswordField, BooleanField, TextAreaField
 from wtforms.fields import DateField, EmailField, TelField
 
 from .models import User
@@ -28,12 +28,12 @@ class RegisterForm(Form):
 		])
 	email = EmailField('Email',[
 		validators.Length(min=1, max=100),
-		validators.DataRequired(message='El Email es Requerido'),
-		validators.Email(message='Ingrese un Email valido')
+		validators.DataRequired(message='El Email es Requerido.'),
+		validators.Email(message='Ingrese un Email valido.')
 		])
 	password = PasswordField('Password',[
 		validators.DataRequired('El Password es requerido'),
-		validators.EqualTo('confirm_password',message='La contraseña no coincide')	
+		validators.EqualTo('confirm_password',message='La contraseña no coincide.')	
 		])
 	confirm_password = PasswordField('Confirm password')
 	accept = BooleanField('',[
@@ -48,3 +48,13 @@ class RegisterForm(Form):
 	def validate_email(self,email):
 		if User.get_by_email(email.data):
 			raise validators.ValidationError('El Email ya esta en uso, escoja otro...!')				
+
+class TaskForm(Form):
+	title = StringField('Titulo',[
+		validators.Length(min=4, max=50,message='Título fuera de rango.'),
+		validators.DataRequired(message='Título es requerido.')
+		])
+	description = TextAreaField('Descripción',[
+		validators.DataRequired(message='Descripción es requerido.')
+		],render_kw={'rows':10})
+
