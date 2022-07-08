@@ -13,20 +13,20 @@
 				<ul class="navbar-nav ml-auto">
 					{% if current_user.is_authenticated %}
 						<li class="nav-item {% if active == 'tasks' %} active {% endif %}">
-							<a class="nav-link" href="{{ url_for('.tasks') }}">Task</a>
+							<a class="nav-link" href="{{ url_for('.tasks') }}"><i class="far fa-list-alt"></i> Task-List</a>
 						</li>
 						<li class="nav-item {% if active == 'new_task' %} active {% endif %}">
-							<a class="nav-link" href="{{ url_for('.new_task') }}">New_Task</a>
+							<a class="nav-link" href="{{ url_for('.new_task') }}"><i class="fa fa-file" aria-hidden="true"></i> New_Task</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{ url_for('.logout') }}">Logout</a>
+							<a class="nav-link" href="{{ url_for('.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
 						</li>
 					{% else %}
 						<li class="nav-item {% if active == 'login' %} active {% endif %}">
-							<a class="nav-link" href="{{ url_for('.login') }}">Login</a>
+							<a class="nav-link" href="{{ url_for('.login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
 						</li>					
 						<li class="nav-item {% if active == 'register' %} active {% endif %}">
-							<a class="nav-link" href="{{ url_for('.register') }}">Register</a>
+							<a class="nav-link" href="{{ url_for('.register') }}"><i class="fas fa-clipboard-list"></i> Register</a>
 						</li>	
 					{% endif %}									
 				</ul>
