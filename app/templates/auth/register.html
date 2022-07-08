@@ -2,9 +2,11 @@
 {% from "helpers/_forms.html" import render_field %}
 
 {% block container %}
-	<div class="col-md-12 col-md-offset-1">
-		<h3>Registro</h3>
-		<form class=""  method="post">
+<div class="card container-fluid" style="background-color: rgb(f, f, f); width: 30rem;">
+		 <img class="card-img-top" src="{{url_for('static',filename='img/post_ca.jpg')}}" alt="POST, C.A.">
+		<div class="card-body" style="background-color: rgb(f, f, f);">
+			<h3>Registro</h3>
+			<form class=""  method="post">
 			<input type="hidden" name="csrf_token" value="{{csrf_token()}}"\>
 			{{ render_field(form.honeypot) }}
 			<div class="form-group">
@@ -27,5 +29,6 @@
 				<i class="fas fa-clipboard-list"></i> Register
 			</button>		
 		</form>
-	</div>
+		</div>
+	</div>	
 {% endblock %}

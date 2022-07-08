@@ -42,7 +42,7 @@ def login():
 		else:	
 			flash(ERROR_USER_PASSWORD,'error')
 
-	return render_template('auth/login.html',title='PYTHON | Login', form=form,active='login')	
+	return render_template('auth/login.html',title='POST | Login', form=form,active='login')	
 
 @page.route('/register', methods=['GET','POST'])
 def register():	
