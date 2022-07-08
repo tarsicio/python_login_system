@@ -56,8 +56,8 @@ class Task(db.Model):
 
 	@property
 	def little_description(self):
-		if len(self.description) > 40:
-			return self.description[0:39] + ' ...'
+		if len(self.description) > 80:
+			return self.description[0:79] + '...'
 		return 	self.description
 
 	@classmethod

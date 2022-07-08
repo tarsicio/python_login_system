@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_wtf.csrf import CSRFProtect
 from flask_sqlalchemy import SQLAlchemy
+from flask_fontawesome import FontAwesome
 
 app = Flask(__name__)
 bootstrap = Bootstrap()
@@ -20,6 +21,7 @@ def create_app(config):
 	csrf.init_app(app)
 	bootstrap.init_app(app)	
 	login_manager.init_app(app)
+	fa = FontAwesome(app)
 	login_manager.login_view = '.login'
 	login_manager.login_message = LOGIN_REQUIRED
 	app.register_blueprint(page)	

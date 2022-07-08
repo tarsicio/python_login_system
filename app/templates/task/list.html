@@ -2,28 +2,28 @@
 {% from "helpers/_forms.html" import render_field %}
 
 {% block container %}
-<div class="d-inline-block">
+<div class="d-inline-block pb-2">
 	<h2>TASKS LIST</h2>
-	<a class="btn btn-primary" href="{{url_for('.new_task')}}">NEW TASK</a>
+	<a class="btn btn-outline-primary btn-sm" href="{{url_for('.new_task')}}">NEW TASK</a>
 </div>
-<table class="table">
-  	<thead>
+<table class="table thead-dark table-sm">
+  	<thead class="thead-dark">
   		<tr>
-  			<th scope="col">Título</th>
-  			<th scope="col">Descripción</th>
-  			<th scope="col" style="text-align:center;">Acciones</th>
+  			<th scope="col" style="text-align:left;" WIDTH="250" >Título</th>
+  			<th scope="col" style="text-align:left;">Descripción</th>
+  			<th scope="col" style="text-align:right;">Acciones</th>
   		</tr>
   	</thead>
   	{% for task in tasks %}
 	<tbody>
 		<tr>
-		    <td>
+		    <td style="text-align:left;" WIDTH="250">
 		    	<a href="{{url_for('.get_task', task_id=task.id)}}">{{task.title}}</a>
 		    </td>	
-		    <th>{{task.little_description}}</th>
-		    <th>
-		    	<a class="btn btn-primary" href="{{url_for('.edit_task', task_id=task.id)}}">EDIT</a>
-		    	<a class="btn btn-danger" href="{{url_for('.delete_task', task_id=task.id)}}">DELETE</a>
+		    <th style="text-align:left;">{{task.little_description}}</th>
+		    <th style="text-align:right;">
+		    	<a class="btn btn-outline-primary btn-sm" href="{{url_for('.edit_task', task_id=task.id)}}"><i class="fa fa-pen" aria-hidden="true"></i></a>
+		    	<a class="btn btn-outline-danger btn-sm" href="{{url_for('.delete_task', task_id=task.id)}}"><i class="fa fa-trash" aria-hidden="true"></i></a>		    	
 		    </th>	
 		</tr>
 	{% endfor %}   
@@ -31,16 +31,16 @@
 </table>
 
 <nav>
-	<ul class="Pagination">
+	<ul class="Pagination input-group">
 		{% if pagination.has_prev %}
-			<li class="page-item">
-				<a class="page-link" href="{{url_for('.tasks', page=page-1)}}">Previous</a>	
+			<li class="input-group-text mr-2">
+				<a class="btn btn-sm" href="{{url_for('.tasks', page=page-1)}}">Previous</a>	
 			</li>
 		{% endif %}
 
 		{% if pagination.has_next %}
-			<li class="page-item">
-				<a class="page-link" href="{{url_for('.tasks', page=page+1)}}">Next</a>	
+			<li class="input-group-text">
+				<a class="btn btn-sm" href="{{url_for('.tasks', page=page+1)}}">Next</a>	
 			</li>
 		{% endif %}
 	</ul>

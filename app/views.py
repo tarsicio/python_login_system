@@ -76,6 +76,7 @@ def new_task():
 		task = Task.create_element(form.title.data,form.description.data,current_user.id)
 		if task:
 			flash(TASK_CREATE)
+			return redirect(url_for('.tasks'))
 	return render_template('task/new.html',title='PYTHON | Task',form=form,active='new_task')
 
 @page.route('/tasks/show/<int:task_id>', methods=['GET','POST'])
@@ -101,6 +102,7 @@ def edit_task(task_id):
 		task = Task.update_element(task.id,form.title.data,form.description.data)
 		if task:
 			flash(TASK_UPDATE)
+			return redirect(url_for('.tasks'))
 	return render_template('task/edit.html',title='PYTHON | Task',form=form)
 
 @page.route('/tasks/delete/<int:task_id>', methods=['GET','POST'])
